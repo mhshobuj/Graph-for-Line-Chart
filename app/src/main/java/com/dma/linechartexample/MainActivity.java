@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -16,7 +17,9 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         LineData data = new LineData(dataSets);
         mLineChart.getAxisRight().setEnabled(false);
+        mLineChart.setTouchEnabled(true);
         mLineChart.setData(data);
         mLineChart.invalidate();
 
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(true);
         xAxis.setValueFormatter(xAxisFormatter);
+
 
         ValueFormatter custom = new MyYAxisValueFormatter();
         YAxis leftAxis = mLineChart.getAxisLeft();
